@@ -63,10 +63,6 @@ echo 1
 echo t
 echo 2
 echo 82
-echo m
-echo x
-echo m
-echo w
 ) | fdisk /dev/sda
 
 echo
