@@ -46,24 +46,25 @@ echo list and prepare disk
 fdisk -l
 echo ---------------------
 echo
-fdisk /dev/sda <<EOF
-n
-p
-1
-
-+20G
-n
-p
-2
-
-+2G
-a
-1
-t
-2
-82
-w
-EOF
+(
+echo o
+echo n
+echo p
+echo 1
+echo
+echo +20G
+echo n
+echo p
+echo 2
+echo
+echo +2G
+echo a
+echo 1
+echo t
+echo 2
+echo 82
+echo w
+) | fdisk /dev/sda
 
 echo
 echo ---------------------
