@@ -113,9 +113,9 @@ echo -------------------
 echo
 #cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 #nano /etc/pacman.d/mirrorlist
-pacman -Sy
+pacman -Sy --noconfirm 
 echo
-pacman -Sy reflector
+pacman -Sy --noconfirm reflector
 echo
 reflector --latest 5 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 echo
