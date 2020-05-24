@@ -64,7 +64,6 @@ t
 82
 p
 w
-echo
 EOF
 
 echo
