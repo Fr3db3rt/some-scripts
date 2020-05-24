@@ -24,7 +24,7 @@ set -e
 # 5. set the password for root (you can't login without password!)
 
 ip a
-pacman -Sy openssh
+pacman -Sy --noconfirm openssh
 systemctl enable sshd.service
 systemctl start sshd.service
 passwd root
