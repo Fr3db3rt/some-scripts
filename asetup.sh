@@ -66,9 +66,6 @@ echo 82
 echo m
 echo x
 echo m
-echo p
-echo r
-echo m
 echo w
 ) | fdisk /dev/sda
 
