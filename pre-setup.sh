@@ -27,4 +27,8 @@ ip a
 pacman -Sy --noconfirm openssh
 systemctl enable sshd.service
 systemctl start sshd.service
-passwd root
+systemctl status sshd.service
+echo ...
+echo change password now with
+echo passwd root
+echo ...
