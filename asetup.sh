@@ -1,5 +1,5 @@
-# bash
-set +e
+#!/bin/bash
+set -e
 # asetup.sh
 #
 #####################
@@ -49,6 +49,7 @@ echo
 fdisk -l
 echo
 
+do_fdisk() {
 echo
 fdisk /dev/sda
 n
@@ -69,6 +70,8 @@ t
 p
 w
 echo
+echo "This will always execute"
+}
 
 echo
 echo ---------------------
