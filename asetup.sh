@@ -41,14 +41,12 @@ loadkeys de
 echo -----------------------------
 echo
 
-do_fdisk() {
-# This will always execute
 echo ---------------------
 echo list and prepare disk
 fdisk -l
 echo ---------------------
 echo
-fdisk /dev/sda
+fdisk /dev/sda <<EOF
 n
 p
 1
@@ -67,9 +65,7 @@ t
 p
 w
 echo
-}
-
-do_fdisk
+EOF
 
 echo
 echo ---------------------
