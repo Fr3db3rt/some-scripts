@@ -37,19 +37,16 @@ echo
 
 echo -----------------------------
 echo load german keyboard settings
-echo -----------------------------
-echo
 loadkeys de
-echo
-
-echo ---------------------
-echo list and prepare disk
-echo ---------------------
-echo
-fdisk -l
+echo -----------------------------
 echo
 
 do_fdisk() {
+# This will always execute
+echo ---------------------
+echo list and prepare disk
+fdisk -l
+echo ---------------------
 echo
 fdisk /dev/sda
 n
@@ -70,8 +67,9 @@ t
 p
 w
 echo
-echo "This will always execute"
 }
+
+do_fdisk
 
 echo
 echo ---------------------
