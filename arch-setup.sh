@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-# arch-setup.sh
+# arch-setup.sh for Arch Linux installation
 #
 #####################
 # some helpful hints:
