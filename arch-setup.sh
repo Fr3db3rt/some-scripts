@@ -1,8 +1,9 @@
 #!/bin/bash
 set -e
-pause(){
+function pause {
         read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
-       }
+}
+pause
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -60,7 +61,7 @@ echo t
 echo 2
 echo 82
 ) | fdisk /dev/sda
-
+echo
 ### or may be better ... echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
 pause
 echo
