@@ -35,7 +35,8 @@ echo load german keyboard settings
 loadkeys de
 echo -----------------------------
 echo
-
+timedatectl set-ntp true
+# to ensure the system clock is accurate
 echo ---------------------
 echo list and prepare disk
 fdisk -l
