@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
+read
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -38,7 +38,7 @@ timedatectl set-ntp true
 echo ---------------------
 echo list and prepare disk
 fdisk -l
-read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
+read
 echo ---------------------
 echo
 (
