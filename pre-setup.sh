@@ -23,6 +23,7 @@ set -e
 # 4. start ssh daemon
 # 5. set the password for root (you can't login without password!)
 
+loadkeys de
 ip a
 pacman -Sy --noconfirm openssh
 systemctl enable sshd.service
