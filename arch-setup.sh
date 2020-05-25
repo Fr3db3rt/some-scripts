@@ -57,6 +57,8 @@ echo 2
 echo 82
 ) | fdisk /dev/sda
 
+#or: echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
+
 echo
 echo ---------------------
 echo format root partition
@@ -113,9 +115,9 @@ reflector --latest 5 --protocol http --protocol https --sort rate --save /etc/pa
 echo
 pacstrap /mnt base base-devel linux linux-firmware nano mc
 echo
-pacman --root /mnt -S dhcpcd
+pacman --root /mnt -Sy --noconfirm dhcpcd
 echo
-pacman --root /mnt -S bash-completion
+pacman --root /mnt -Sy --noconfirm bash-completion
 echo
 genfstab -Up /mnt > /mnt/etc/fstab
 echo
@@ -141,7 +143,7 @@ ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 echo
 mkinitcpio -p linux
 echo
-pacman -S grub
+pacman -Sy --noconfirm grub
 echo
 grub-install /dev/sda
 echo
