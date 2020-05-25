@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e
-function pause {
+function pause () {
         read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
 }
 pause
+
 # arch-setup.sh for Arch Linux installation
 #
 #####################
