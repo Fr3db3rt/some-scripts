@@ -1,5 +1,8 @@
 #!/bin/bash
 set -e
+pause(){
+        read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
+       }
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -44,12 +47,12 @@ echo n
 echo p
 echo 1
 echo
-echo +20G
+echo +10G
 echo n
 echo p
 echo 2
 echo
-echo +2G
+echo +1G
 echo a
 echo 1
 echo t
@@ -57,36 +60,22 @@ echo 2
 echo 82
 ) | fdisk /dev/sda
 
-#or: echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
-
+### or may be better ... echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
+pause
 echo
-echo ---------------------
-echo format root partition
-echo ---------------------
-mkfs.ext4 -L p_arch /dev/sda1
+echo -------------------------------
+echo format and mount root partition
+echo -------------------------------
+mkfs.ext4 /dev/sda1
+mount /dev/sda1 /mnt
 echo
-
+echo ------------------------------------
+echo format and initialize swap partition
+echo ------------------------------------
+mkswap /dev/sda2
+swapon /dev/sda2
 echo
-echo ---------------------
-echo format swap partition
-echo ---------------------
-mkswap -L p_swap /dev/sda2
-echo
-
-echo
-echo --------------------
-echo mount root partition
-echo --------------------
-mount -L p_arch /mnt
-echo
-
-echo
-echo --------------------
-echo mount swap partition
-echo --------------------
-swapon -L p_swap
-echo
-
+pause
 # config proxy server (if any)
 # if proxy is used for ftp or http(s) connection:
 #export http_proxy="http://<servername>:<port>"
@@ -99,47 +88,44 @@ echo test network
 echo ------------
 ping -c3 www.archlinux.de
 echo
-
+pause
 echo
-echo -------------------
-echo install base system
-echo -------------------
+echo -----------------------
+echo sort and select mirrors
+echo -----------------------
 echo
-#cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-#nano /etc/pacman.d/mirrorlist
 pacman -Sy --noconfirm 
 echo
 pacman -Sy --noconfirm reflector
 echo
-reflector --latest 5 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 echo
-pacstrap /mnt base base-devel linux linux-firmware nano mc
+pacstrap /mnt base linux linux-firmware
 echo
-pacman --root /mnt -Sy --noconfirm dhcpcd
+pacman --root /mnt -Sy --noconfirm dhcpcd bash-completion nano mc openssh
 echo
-pacman --root /mnt -Sy --noconfirm bash-completion
+pause
 echo
-genfstab -Up /mnt > /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 echo
 echo -------------
 cat /mnt/etc/fstab
 echo -------------
+pause
 echo
-arch-chroot /mnt/
+arch-chroot /mnt
 echo
 echo ------------------------------------------------------------------
-echo
-
-echo
-echo manage > /etc/hostname
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 echo LANG=de_DE.UTF-8 > /etc/locale.conf
-echo
 locale-gen
-echo
 echo KEYMAP=de-latin1 > /etc/vconsole.conf
 echo FONT=lat9w-16 >> /etc/vconsole.conf
-echo
-ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+echo manage-01 > /etc/hostname
+echo 127.0.0.1	localhost >> /etc/hosts
+echo ::1		localhost /etc/hosts
+echo 127.0.1.1	manage-01.oz.local	manage-01 /etc/hosts
+
 echo
 mkinitcpio -p linux
 echo
