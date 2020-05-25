@@ -122,10 +122,9 @@ locale-gen
 echo KEYMAP=de-latin1 > /etc/vconsole.conf
 echo FONT=lat9w-16 >> /etc/vconsole.conf
 echo manage-01 > /etc/hostname
-echo 127.0.0.1	localhost >> /etc/hosts
-echo ::1		localhost /etc/hosts
-echo 127.0.1.1	manage-01.oz.local	manage-01 /etc/hosts
-
+echo 127.0.0.1 localhost >> /etc/hosts
+echo ::1 localhost >> /etc/hosts
+echo 127.0.1.1 manage-01.localdomain manage-01 >> /etc/hosts
 echo
 mkinitcpio -p linux
 echo
@@ -134,12 +133,21 @@ echo
 grub-install /dev/sda
 echo
 grub-mkconfig -o /boot/grub/grub.cfg
+pause
 echo
-echo ===========================================
-echo ===========================================
-echo ===========================================
-exit
-umount /dev/sda1
-echo
-echo reboot now!
+echo ====================================
+echo ====================================
+echo ====================================
+echo Don't forget to set ...
+echo 1st - the new password
+echo *** while in chroot! ***
+echo 2nd - then exit chroot
+echo ...
+echo 3rd - umount /dev/sda1
+echo ...
+echo 4th - reboot now
+echo ====================================
+echo ====================================
+echo ====================================
+pause
 echo
