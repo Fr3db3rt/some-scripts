@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-# pre-setup.sh
+# pre-setup.sh for Arch Linux installation
 #
 #####################
 # some helpful hints:
