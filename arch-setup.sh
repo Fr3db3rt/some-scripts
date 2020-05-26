@@ -40,30 +40,10 @@ echo list and prepare disk
 fdisk -l
 sleep 3
 echo ---------------------
-echo
-(
-echo o
-echo n
-echo p
-echo 1
-echo
-echo +10G
-echo n
-echo p
-echo 2
-echo
-echo +1G
-echo a
-echo 1
-echo t
-echo 2
-echo 82
-) | fdisk /dev/sda
 
-
+echo -e "o\nn\np\n1\n\n+10G\nn\np\n2\n\n+1G\na\n1\nt\n2\n82\n | fdisk /dev/sda
 
 echo
-### or may be better ... echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
 sleep 3
 echo
 echo -------------------------------
