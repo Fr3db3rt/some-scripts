@@ -1,8 +1,10 @@
 #!/bin/bash
+# curl -sSL https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/pre-setup.sh | bash
 set -e
 # pre-setup.sh for Arch Linux installation
 # downloads ...
 curl -o arch-setup.sh -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$RANDOM"#
+
 # and prepares for ssh connections
 #
 #####################
@@ -10,10 +12,11 @@ curl -o arch-setup.sh -H "Cache-Control: no-cache" -sSL "https://raw.githubuserc
 #####################
 # to avoid cached script content with cURL:
 # - it's possible to use -H "Cache-Control: no-cache"
+# - or/and --no-sessionid
 # - and also add querystring parameter like "?$RANDOM"
 # that makes debugging easier when script content changes often :-)
-# for example:
-# curl -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/pre-setup.sh?$RANDOM" | bash
+# for example: (used -v for more debugging info)
+# curl -v --no-sessionid -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/pre-setup.sh?$RANDOM" | bash
 # see https://stackoverflow.com/questions/31653271/curl-command-without-using-cache
 #
 # in order to use scripting and editing more comfortable:
