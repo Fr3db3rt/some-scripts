@@ -1,18 +1,22 @@
 #!/bin/bash
 set -e
 # pre-setup.sh for Arch Linux installation
+# downloads ...
+curl -o arch-setup.sh -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$RANDOM"#
+# and prepares for ssh connections
 #
 #####################
 # some helpful hints:
 #####################
-#
-# to avoid cached script content, it's possible to add "?$(date +%s)" in curl
+# to avoid cached script content with cURL:
+# - it's possible to use -H "Cache-Control: no-cache"
+# - and also add querystring parameter like "?$RANDOM"
 # that makes debugging easier when script content changes often :-)
 # for example:
-# curl -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/pre-setup.sh?$(date +%s)" | bash
-# see also https://stackoverflow.com/questions/31653271/curl-command-without-using-cache
+# curl -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/pre-setup.sh?$RANDOM" | bash
+# see https://stackoverflow.com/questions/31653271/curl-command-without-using-cache
 #
-# in order to use scripting and editing more comfortabel:
+# in order to use scripting and editing more comfortable:
 # for instance I used a virtual machine in ESXi, which I can log in from,
 # but then I was left out without copy and paste and things like that,
 # I prepared it for ssh with just a few keystrokes
@@ -32,4 +36,5 @@ systemctl status sshd.service
 echo ...
 echo change password now with
 echo passwd root
-echo ...
+echo
+passwd root
