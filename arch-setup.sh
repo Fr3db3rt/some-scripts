@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
-echo #!/bin/bash > test.sh
-echo read -p "Press enter to continue" >> test.sh
-chmod +x test.sh
-sh .\test.sh
+sleep 3
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -41,7 +38,7 @@ timedatectl set-ntp true
 echo ---------------------
 echo list and prepare disk
 fdisk -l
-read -p "Press enter to continue" -t 10
+sleep 3
 echo ---------------------
 echo
 (
@@ -62,9 +59,12 @@ echo t
 echo 2
 echo 82
 ) | fdisk /dev/sda
+
+
+
 echo
 ### or may be better ... echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
-pause
+sleep 3
 echo
 echo -------------------------------
 echo format and mount root partition
@@ -78,7 +78,7 @@ echo ------------------------------------
 mkswap /dev/sda2
 swapon /dev/sda2
 echo
-pause
+sleep 5
 # config proxy server (if any)
 # if proxy is used for ftp or http(s) connection:
 #export http_proxy="http://<servername>:<port>"
@@ -91,7 +91,7 @@ echo test network
 echo ------------
 ping -c3 www.archlinux.de
 echo
-pause
+sleep 3
 echo
 echo -----------------------
 echo sort and select mirrors
@@ -107,14 +107,14 @@ pacstrap /mnt base linux linux-firmware
 echo
 pacman --root /mnt -Sy --noconfirm dhcpcd bash-completion nano mc openssh
 echo
-pause
+sleep 3
 echo
 genfstab -U /mnt >> /mnt/etc/fstab
 echo
 echo -------------
 cat /mnt/etc/fstab
 echo -------------
-pause
+sleep 3
 echo
 arch-chroot /mnt
 echo
@@ -129,11 +129,11 @@ echo manage-01 >> /etc/hostname
 echo 127.0.0.1 localhost >> /etc/hosts
 echo ::1 localhost >> /etc/hosts
 echo 127.0.1.1 manage-01.localdomain manage-01 >> /etc/hosts
-pause
+sleep 5
 systemctl enable sshd.service
 systemctl start sshd.service
 systemctl status sshd.service
-pause
+sleep 3
 mkinitcpio -p linux
 echo
 pacman -Sy --noconfirm grub
@@ -141,7 +141,7 @@ echo
 grub-install /dev/sda
 echo
 grub-mkconfig -o /boot/grub/grub.cfg
-pause
+sleep 3
 echo
 echo ====================================
 echo ====================================
@@ -157,5 +157,5 @@ echo 4th - reboot now
 echo ====================================
 echo ====================================
 echo ====================================
-pause
+sleep 3
 echo
