@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+# https://unix.stackexchange.com/questions/134437/press-space-to-continue
 pause(){
  read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
 } 
