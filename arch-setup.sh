@@ -7,10 +7,12 @@ sleep 3
 # some helpful hints:
 #####################
 #
-# to avoid cached script content, it's possible to add "?$(date +%s)" in curl
+# to avoid cached script content with cURL:
+# - it's possible to use -H 'Cache-Control: no-cache'
+# - and also add querystring parameter like "?$RANDOM"
 # that makes debugging easier when script content changes often :-)
 # for example:
-# curl -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$(date +%s)" | bash
+# curl -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$RANDOM" | bash
 # see https://stackoverflow.com/questions/31653271/curl-command-without-using-cache
 #
 # in order to use this scripting and editing more comfortabel:
