@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-read
+read -p "Press enter to continue"
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -38,7 +38,7 @@ timedatectl set-ntp true
 echo ---------------------
 echo list and prepare disk
 fdisk -l
-read
+read -p "Press enter to continue"
 echo ---------------------
 echo
 (
