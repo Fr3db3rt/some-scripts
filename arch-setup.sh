@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-echo #!/bin/bash > .\test.sh
-echo read -p "Press enter to continue" >> .\test.sh
-chmod +x .\test.sh
+echo #!/bin/bash > test.sh
+echo read -p "Press enter to continue" >> test.sh
+chmod +x test.sh
 .\test.sh
 # arch-setup.sh for Arch Linux installation
 #
