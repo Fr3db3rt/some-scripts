@@ -123,10 +123,10 @@ echo
 grub-mkconfig -o /boot/grub/grub.cfg
 sleep 3
 echo
-echo ====================================
-echo ====================================
-echo ====================================
-echo Don't forget to set ...
+echo ========================
+echo ========================
+echo ========================
+echo Do not forget to set ...
 echo 1st - the new password
 echo *** while in chroot! ***
 echo 2nd - then exit chroot
@@ -134,8 +134,8 @@ echo ...
 echo 3rd - umount /dev/sda1
 echo ...
 echo 4th - reboot now
-echo ====================================
-echo ====================================
-echo ====================================
+echo ========================
+echo ========================
+echo ========================
 sleep 3
 echo
