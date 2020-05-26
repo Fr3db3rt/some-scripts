@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 read -p "Press enter to continue" -t 10
+read -n 1 -p "Input Selection:" mainmenuinput
 # arch-setup.sh for Arch Linux installation
 #
 #####################
