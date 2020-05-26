@@ -88,8 +88,10 @@ pacman -Sy --noconfirm reflector
 echo
 reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 echo
+pause
 pacstrap /mnt base linux linux-firmware
 echo
+pause
 pacman --root /mnt -Sy --noconfirm dhcpcd bash-completion nano mc openssh
 echo
 pause
@@ -106,18 +108,18 @@ echo
 echo ------------------------------------------------------------------
 ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 hwclock --systohc
-echo LANG=de_DE.UTF-8 >> /etc/locale.conf
+echo LANG=de_DE.UTF-8 > /etc/locale.conf
 locale-gen
 echo KEYMAP=de-latin1 >> /etc/vconsole.conf
 echo FONT=lat9w-16 >> /etc/vconsole.conf
-echo manage-01 >> /etc/hostname
+echo manage-01 > /etc/hostname
 echo 127.0.0.1 localhost >> /etc/hosts
 echo ::1 localhost >> /etc/hosts
 echo 127.0.1.1 manage-01.localdomain manage-01 >> /etc/hosts
 pause
-systemctl enable sshd.service
-systemctl start sshd.service
-systemctl status sshd.service
+#systemctl enable sshd.service
+#systemctl start sshd.service
+#systemctl status sshd.service
 pause
 mkinitcpio -p linux
 echo
