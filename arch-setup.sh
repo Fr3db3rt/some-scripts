@@ -4,7 +4,6 @@ set -e
 pause(){
  read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
 } 
-pause
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -34,7 +33,7 @@ echo
 echo for more information how I created pre-setup.sh read source at 
 echo https://wiki.archlinux.de/title/Anleitung_f%C3%BCr_Einsteiger
 echo
-pause
+
 echo -----------------------------
 echo load german keyboard settings
 loadkeys de
@@ -45,13 +44,13 @@ timedatectl set-ntp true
 echo ---------------------
 echo list and prepare disk
 fdisk -l
-sleep 3
 echo ---------------------
-
+pause
 echo -e "o\nn\np\n1\n\n+10G\nn\np\n2\n\n+1G\na\n1\nt\n2\n82\nw\n" | fdisk /dev/sda
 
+fdisk -l
 echo
-sleep 3
+pause
 echo
 echo -------------------------------
 echo format and mount root partition
@@ -65,20 +64,19 @@ echo ------------------------------------
 mkswap /dev/sda2
 swapon /dev/sda2
 echo
-sleep 5
-# config proxy server (if any)
+pause
+# config proxy server here (if any)
 # if proxy is used for ftp or http(s) connection:
 #export http_proxy="http://<servername>:<port>"
 #export https_proxy="https://<servername>:<port>"
 #export ftp_proxy="ftp://<servername>:<port>"
-
 echo
 echo ------------
 echo test network
 echo ------------
 ping -c3 www.archlinux.de
 echo
-sleep 3
+pause
 echo
 echo -----------------------
 echo sort and select mirrors
@@ -94,14 +92,14 @@ pacstrap /mnt base linux linux-firmware
 echo
 pacman --root /mnt -Sy --noconfirm dhcpcd bash-completion nano mc openssh
 echo
-sleep 3
+pause
 echo
 genfstab -U /mnt >> /mnt/etc/fstab
 echo
 echo -------------
 cat /mnt/etc/fstab
 echo -------------
-sleep 3
+pause
 echo
 arch-chroot /mnt
 echo
@@ -116,11 +114,11 @@ echo manage-01 >> /etc/hostname
 echo 127.0.0.1 localhost >> /etc/hosts
 echo ::1 localhost >> /etc/hosts
 echo 127.0.1.1 manage-01.localdomain manage-01 >> /etc/hosts
-sleep 5
+pause
 systemctl enable sshd.service
 systemctl start sshd.service
 systemctl status sshd.service
-sleep 3
+pause
 mkinitcpio -p linux
 echo
 pacman -Sy --noconfirm grub
@@ -128,7 +126,7 @@ echo
 grub-install /dev/sda
 echo
 grub-mkconfig -o /boot/grub/grub.cfg
-sleep 3
+pause
 echo
 echo ========================
 echo ========================
@@ -144,5 +142,5 @@ echo 4th - reboot now
 echo ========================
 echo ========================
 echo ========================
-sleep 3
+pause
 echo
