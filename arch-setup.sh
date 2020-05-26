@@ -3,30 +3,6 @@ set -e
 sleep 3
 # arch-setup.sh for Arch Linux installation
 #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #####################
 # some helpful hints:
 #####################
