@@ -3,8 +3,9 @@
 set -e
 # pre-setup.sh for Arch Linux installation
 # downloads ...
-curl -o arch-setup.sh -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$RANDOM"#
-
+curl -sSL https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh -o arch-setup.sh
+ls
+chmod +x arch-setup.sh
 # and prepares for ssh connections
 #
 #####################
