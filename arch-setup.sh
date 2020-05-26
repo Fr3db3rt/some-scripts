@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
-sleep 3
+pause(){
+ read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
+} 
+pause
 # arch-setup.sh for Arch Linux installation
 #
 #####################
@@ -30,7 +33,7 @@ echo
 echo for more information how I created pre-setup.sh read source at 
 echo https://wiki.archlinux.de/title/Anleitung_f%C3%BCr_Einsteiger
 echo
-
+pause
 echo -----------------------------
 echo load german keyboard settings
 loadkeys de
