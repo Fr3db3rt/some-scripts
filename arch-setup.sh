@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
-read -p "Press enter to continue" -t 10
-read -n 1 -p "Input Selection:" mainmenuinput
+echo #!/bin/bash > .\test.sh
+echo read -p "Press enter to continue" >> .\test.sh
+chmod +x .\test.sh
+.\test.sh
 # arch-setup.sh for Arch Linux installation
 #
 #####################
