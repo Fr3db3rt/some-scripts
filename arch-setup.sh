@@ -9,10 +9,11 @@ sleep 3
 #
 # to avoid cached script content with cURL:
 # - it's possible to use -H 'Cache-Control: no-cache'
+# - or/and --no-sessionid
 # - and also add querystring parameter like "?$RANDOM"
 # that makes debugging easier when script content changes often :-)
 # for example: (used -v for more debugging info)
-# curl -v -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$RANDOM" | bash
+# curl -v --no-sessionid -H "Cache-Control: no-cache" -sSL "https://raw.githubusercontent.com/Fr3db3rt/some-scripts/master/arch-setup.sh?$RANDOM" | bash
 # see https://stackoverflow.com/questions/31653271/curl-command-without-using-cache
 #
 # in order to use this scripting and editing more comfortabel:
