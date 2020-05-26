@@ -41,7 +41,7 @@ fdisk -l
 sleep 3
 echo ---------------------
 
-echo -e "o\nn\np\n1\n\n+10G\nn\np\n2\n\n+1G\na\n1\nt\n2\n82\n | fdisk /dev/sda
+echo -e "o\nn\np\n1\n\n+10G\nn\np\n2\n\n+1G\na\n1\nt\n2\n82\n" | fdisk /dev/sda
 
 echo
 sleep 3
